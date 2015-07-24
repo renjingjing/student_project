@@ -1,0 +1,39 @@
+
+
+<%= simple_form_for @course do |f| %>
+
+
+<div class="sign-up-form col-md-4">
+  <table>
+    <tr>
+      <th>
+        <%= f.input :name, label_html: { class: 'sign-up-form-field' } %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <%= f.input :description, label_html: { class: 'sign-up-form-field' }%>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <%= f.collection_check_boxes :course_unit_ids, CourseUnit.all, :id, :title, label_html: { class: 'sign-up-form-field' }%>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <br>
+        <%= f.input :course_logo, label_html: { class: 'sign-up-form-field' }%>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <%= f.submit class: "btn btn-success" %>
+      </th>
+    </tr>
+  </table>
+
+
+</div>
+
+<% end %>

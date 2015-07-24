@@ -1,0 +1,30 @@
+<h1> Instructors </h1>
+
+<% @users.each do |teacher| %>
+  <%= "#{teacher.first_name} #{teacher.last_name}" %><br>
+  <%= link_to "Delete Instructor" %>
+<% end %><br/>
+
+<h2>Invite Instructor</h2><br/>
+
+<div>
+  <%= label_tag :message %>
+  <%= text_area_tag :message %>
+</div>
+  <%= link_to "Invite Instructor" %>
+
+
+  <h1> Students </h1>
+
+<% @users.each do |student| %>
+  <%= "#{student.first_name} #{student.last_name}" %><br>
+  <%= link_to "Delete Student" %>
+<% end %><br/>
+
+  <h2> Invite Student <h2><br>
+
+<div>
+  <%= label_tag :message %>
+  <%= text_area_tag :message %>
+</div>
+  <%= link_to "Invite Student" %>

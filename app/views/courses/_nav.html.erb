@@ -1,0 +1,8 @@
+<div class="course-nav" style= "margin-top: 20px;">
+	<% if @course.present? && @course_unit.present? %>
+	<%= link_to "Course", course_path(@course) %> //
+		<%= link_to "Course Unit", course_unit_path(@course_unit) %>
+	<% else %>
+		Course: <%= link_to @course.name, course_path(@course) %> //
+	<% end %>
+</div>

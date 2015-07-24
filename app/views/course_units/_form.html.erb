@@ -1,0 +1,32 @@
+<% if @course_unit.errors.any? %>
+  <ul>
+    <% @course_unit.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="jumbotron-white">
+  <div class="sign-up-form col-md-4">
+  <table>
+    <tr>
+    <%= simple_form_for [@course, @course_unit] do |f| %>
+      <th class="sign-up-form-field">
+        <%= f.input :title %>
+      </th>
+    </tr>
+    <tr>
+      <th class="sign-up-form-field">
+        <%= f.input :body %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <%= f.submit "Create Unit", class: "btn btn-success" %>
+      </th>
+    </tr>
+
+    <% end %>
+  </table>
+  </div>
+</div>

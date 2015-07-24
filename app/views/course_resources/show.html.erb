@@ -1,0 +1,43 @@
+<div class="inline">
+  <h1><%= @course_resource.title %> (<%= @course_resource.kind.title %>)&nbsp;</h1>
+</div>
+
+<%# if can?(:manage, @course_resource) %>
+<div class="inline">
+   <%= link_to "Edit", edit_course_unit_course_resource_path(@course_unit,@course_resource)  %> | <%= link_to "Delete", course_unit_course_resource_path(@course_unit,@course_resource), method: :delete,
+            data:  {confirm: "Are you sure you want to delete the resource?"}  %>
+</div>
+<%# end %>
+
+<div class="jumbotron-white">
+  <div class="well">
+    <%= @course_resource.content %>
+  </div>
+  <% if @course_resource.resource_file.present? %>
+    <%= File.basename(@course_resource.resource_file.path)  %> <br /> <%= link_to 'Download file', @course_resource.resource_file.url %>
+  <% end %>
+</div>
+<% if current_user.admin? %>
+  <%= link_to "Submissions", course_resource_submissions_path(@course_resource) %>
+<% end %>
+<% if @course_resource.course_unit %>
+  <% if @course_resource.course_unit.course %>
+    <% if @course_resource.course_unit.course.students.include? current_user %>
+      <div class="jumbotron-white">
+        <%= render "/submissions/form" %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+  <div class="inline">
+    <%# button_to "Edit", edit_course_unit_course_resource_path(@course_unit,@course_resource), :class => "btn label-warning"  %>
+  </div>
+  <div class="inline">
+    <%# button_to "Delete", course_unit_course_resource_path(@course_unit,@course_resource), method: :delete, :class => "btn label-warning",
+		<%= @course_resource.title %><br />
+		<%= @course_resource.kind.title %><br />
+		<%= @course_resource.content %>
+		<% if @course_resource.resource_file.present? %>
+		  <%= File.basename(@course_resource.resource_file.path)  %> | <%= link_to 'Download file', @course_resource.resource_file.url %>
+		<% end %>
+	</div>

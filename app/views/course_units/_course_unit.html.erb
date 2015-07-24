@@ -1,0 +1,7 @@
+<% @course.course_units.each do |course_unit| %>
+<div id="individual-course-unit">
+		<ul>
+		<li><h2><%= link_to course_unit.title, course_unit_path(course_unit) %></h2></li>
+		<%= render "course_resources/resource", course_unit: course_unit %>
+</div>
+<% end %>

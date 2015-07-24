@@ -1,0 +1,8 @@
+
+  <%= simple_form_for [@course_unit,@course_resource] do |f| %>
+    <%= f.input :title %>
+    <%= f.association :kind, collection: Kind.all, label_method: :title, value_method: :id, prompt: "Choose Resource Type" %>
+    <%= f.input :content %>
+    <%= f.input :resource_file %>
+    <%= f.submit "Submit", :class => "btn label-warning" %>
+  <% end %>

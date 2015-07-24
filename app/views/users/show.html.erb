@@ -1,0 +1,16 @@
+<h1>Current user</h1>
+  <li role="presentation" class="label-warning"><%= link_to "Edit Users", edit_users_path(1) %></li>
+  <hr>
+
+<h2> <%= current_user.full_name %> Profile </h2>
+<div><%= link_to "Edit Profile", edit_users_path, :style => "color: blue;" %> |
+ <%= link_to 'Log Out', sessions_path, method: :delete,
+ data: { confirm: 'Are you sure you want to log out?' }, :style => "color: blue;" %></div>
+
+<ul>
+  <li>Name: <%= current_user.full_name%></li>
+  <li>Email: <%= current_user.email%></li>
+  <li>City: <%= current_user.city%></li>
+  <li>Country: <%= current_user.country%></li>
+  <li>Bio: <%= current_user.bio%></li>
+</ul>

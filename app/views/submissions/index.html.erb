@@ -1,0 +1,12 @@
+<p>Submissions for :<%= @course_resource.title %></p>
+<% @submissions.each do |submission| %>
+  <%= submission.body %>
+  <%= submission.user.full_name %>
+  <% score = Score.where(user: submission.user, course_resource: @course_resource) %>
+  <%= form_tag score_path(score.first), method: :patch do %>
+    <%= hidden_field_tag :course_resource, @course_resource.id %>
+    <%= hidden_field_tag :submission,  submission.id %>
+    <%= hidden_field_tag :user_id,  submission.user.id %>
+    <%= submit_tag "Mark Complete" %>
+  <% end %>
+<% end %>

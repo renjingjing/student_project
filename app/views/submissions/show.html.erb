@@ -1,0 +1,19 @@
+<p>Submission:<%= @submission.body %></p>
+<% @submissions.each do |submission| %>
+
+  <%= submission.body %>
+  <%= submission.user.full_name %>
+
+  <%= form_tag scores_path do %>
+
+    <%= hidden_field_tag :course_resource, @course_resource.id %>
+    <%= hidden_field_tag :submission,  submission.id %>
+    <%= hidden_field_tag :user_id,  submission.user.id %>
+
+
+    <%= submit_tag "Mark Complete" %>
+
+  <% end %>
+
+
+<% end %>

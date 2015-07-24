@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Portal</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<nav>
+  <div class="logo"><%= link_to image_tag("logo.png"), root_path %></div>
+  <ul class="nav nav-tabs">
+
+    <li><span class="user-greeting">
+
+  <% if current_user %>
+      Hello <%= current_user.first_name %>,
+       <% if current_user.avatar.present? %>
+        <div>
+           <%= image_tag(current_user.avatar.square_thumb.url, class: "img-circle animated bounce") %>
+        </div>
+       <% end %>
+       <%= link_to 'Log Out', sessions_path, method: :delete,
+            data: { confirm: 'Are you sure you want to log out?' }%></span></li>
+
+          <li role="presentation" class="label-warning"><%= link_to 'Contact Us', contact_index_path %></li>
+
+          <li role="presentation" class="label-warning"><%= link_to "Courses", courses_path %></li>
+
+          <li role="presentation" class="label-warning"><%= link_to "Show Profile", current_user %></li>
+
+          <li role="presentation" class="label-warning"><%= link_to "Course Units", course_units_path %></li>
+
+   <% else %>
+                <!-- Links if not signed in -->
+          <li role="presentation" class="label-warning"><%= link_to 'Contact Us', contact_index_path %></li>
+          <li role="presentation" class="label-warning"><%= link_to "Log in", new_session_path %></li>
+
+
+   <% end %>
+    </ul>
+  </nav>
+  <div class="container">
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert] %>
+    <div class="alert alert-danger" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+  </div>
+
+  <!-- Begin footer jumbotron-green -->
+<footer>
+  <div class="jumbotron-green">
+    <div class="col-md-4">
+      <h3>CodeCore Bootcamp</h3> <p>
+        142 W Hastings St<br>
+        Vancouver, BC<br>
+        V6B 1G8
+      </p>
+      <p>
+        Phone: (604) 559-2633
+      </p>
+    </div>
+  <div class="col-md-4">
+    <h3>Hours</h3>
+    <p>
+    <table>
+        <tr>
+          <th>Monday&nbsp;&nbsp;</th>
+          <th>8:00 am – 8:00 pm</th>
+        </tr>
+        <tr>
+          <td>Tuesday&nbsp;&nbsp;</td>
+          <td>8:00 am – 8:00 pm</td>
+        </tr>
+        <tr>
+          <td>Wednesday&nbsp;&nbsp;</td>
+          <td>8:00 am – 8:00 pm</td>
+        </tr>
+        <tr>
+          <td>Thursday&nbsp;&nbsp;</td>
+          <td>8:00 am – 8:00 pm</td>
+        </tr>
+        <tr>
+          <td>Friday&nbsp;&nbsp;</td>
+          <td>8:00 am – 8:00 pm</td>
+        </tr>
+        <tr>
+          <td>Saturday&nbsp;&nbsp;</td>
+          <td>11:00 am – 4:00 pm</td>
+        </tr>
+        <tr>
+          <td>Sunday&nbsp;&nbsp;</td>
+          <td>Closed</td>
+        </tr>
+    </table>
+    </p>
+  </div>
+
+
+  <div class="col-md-4">
+    <h3>Follow us</h3>
+    <span>
+      <%= link_to image_tag("social/facebook.png"), "https://www.facebook.com/CodeCoreBootcamp" %>
+      <%= link_to image_tag("social/twitter.png"), "https://twitter.com/codecoreyvr" %>
+    </span>
+  </div>
+</div>
+</div>
+
+  <!-- Begin copyright bar -->
+  <div class="copyright">
+    <div class="col-lg-12">
+      <span>Copyright © 2015 CodeCore Bootcamp</span>
+    </div>
+  </div>
+
+</footer>
+</body>
+</html>

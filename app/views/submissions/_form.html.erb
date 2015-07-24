@@ -1,0 +1,11 @@
+<div class="col-xs-offset-2 col-xs-8 bottom-out">
+	<h2>Submit Assignment</h2>
+
+	<%= simple_form_for [@course_resource,@submission] do |f| %>
+		<%= f.input :body %>
+		<%= f.input :file %>
+		<%= f.hidden_field :course_unit_id, value: [@course_unit.id] %>
+		<%= f.submit "Submit", :class => "btn label-warning" %>
+	<% end %>
+
+</div>

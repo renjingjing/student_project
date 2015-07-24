@@ -1,0 +1,10 @@
+<h1>Courses</h1>
+<li role="presentation" class="label-warning"><%= link_to "Create a Course", new_course_path %></li>
+<li role="presentation" class="label-warning"><%= link_to "Edit a Course", edit_course_path(1) %></li>
+<li role="presentation" class="label-warning"><%= link_to "Show Course", course_path(1) %></li>
+<hr>
+<ul>
+  <% @courses.each do |course| %>
+    <li><%= link_to course.name, course_path(course) %></li>
+  <% end %>
+</ul>

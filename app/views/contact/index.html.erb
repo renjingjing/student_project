@@ -1,0 +1,46 @@
+<h1>Contact Us</h1>
+
+<%= form_tag "/contact" do %>
+
+<div class="sign-up-form">
+  <table>
+    <tr>
+      <th class="sign-up-form-field">
+        <%= label_tag :name %>
+      </th>
+      <th>
+          <%= text_field_tag(:name, "", {placeholder: ""}) %>
+      </th>
+    </tr>
+    <tr>
+        <th class="sign-up-form-field">
+          <%= label_tag :email %>
+        </th>
+        <th>
+          <%= email_field_tag :email %>
+        </th>
+    </tr>
+    <tr>
+      <th class="sign-up-form-field">
+        <%= label_tag :phone %>
+      </th>
+      <th>
+        <%= phone_field_tag :phone %>
+      </th>
+    </tr>
+    <tr>
+        <th class="sign-up-form-field">
+          <%= label_tag :message %>
+        </th>
+        <th>
+          <%= text_area_tag :message %>
+        </th>
+    </tr>
+    <tr>
+      <th class="sign-up-form-field">
+        <%= submit_tag "Submit", class: "btn btn-success" %>
+      </th>
+    </tr>
+
+  </table>
+<% end %>

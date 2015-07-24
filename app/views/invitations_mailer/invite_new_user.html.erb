@@ -1,0 +1,12 @@
+<p>Hi there!
+
+<%= @invitation.inviter.full_name %> has invited you to sign up at CodeCore development
+school in order to take part in <%= @invitation.course.name %>.
+<br>
+<%= link_to "localhost:3000#{new_user_path(token: {token: @invitation.token})}","localhost:3000#{new_user_path(token: {token: @invitation.token})}"  %>
+ Please copy and paste that link into your path bar in order to obtain your invitation
+ and to create an account at CodeCore and good luck with your studies!
+<br>
+ Thanks
+<br>
+ The CodeCore Team

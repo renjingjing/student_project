@@ -1,0 +1,31 @@
+
+  <%= form_tag sessions_path do %>
+<div class="sign-up-form col-md-4">
+  <table>
+    <tr>
+      <th class="sign-up-form-field">
+        <%= label_tag :email %>
+      </th>
+      <th class="sign-up-form-field">
+        <%= text_field_tag :email %>
+      </th>
+    </tr>
+    <tr>
+      <th class="sign-up-form-field">
+        <%= label_tag :password %>
+      </th>
+      <th class="sign-up-form-field">
+        <%= password_field_tag :password %>
+      </th>
+      <tr>
+        <th class="sign-up-form-field ">
+
+            <%= submit_tag "Submit", class: "btn btn-success" %>
+        </th>
+      </tr>
+
+    </tr>
+  </table>
+
+  <% end %>
+</div>

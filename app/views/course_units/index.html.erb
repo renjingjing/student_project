@@ -1,0 +1,23 @@
+<h1>Course Units</h1>
+<li role="presentation" class="label-warning"><%= link_to "Create a new Course Unit", new_course_unit_path%></li>
+  <!--There is an id number in the path for testing purposes only! This is temporary.-->
+<li role="presentation" class="label-warning"><%= link_to "Edit a Course Unit", edit_course_unit_path(1) %></li>
+<hr>
+
+<div class="container container-welcome">
+  <% @course_units.each do |course_unit| %>
+  <table>
+    <tr>
+    <th><h2><%= link_to course_unit.title, course_unit_path(course_unit) %><h2></th>
+    </tr>
+    <div class="container">
+      <% course_unit.course_resources.each do |resource| %>
+      <tr>
+        <td><%= link_to resource.title, course_unit_course_resource_path(course_unit, resource) %></td>
+      </tr>
+      <% end %>
+    </div>
+    <hr>
+  </table>
+  <% end %>
+  </div>

@@ -1,0 +1,42 @@
+
+<%= render "courses/nav", course: @course %>
+
+<h2><%= @course.name %></h2>
+<p>
+  <%= @course.description %>
+</p>
+
+<!-- Assignment Progress -->
+<!-- Why is this here? -->
+<% if @course.students.include? current_user %>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: user_percentage%;">
+      <span class="sr-only">60% Complete</span>
+    </div>
+  </div>
+  <% if @course.course_resources.count > 0 %>
+    <!-- progress bar result ** TO DO, qualify progress per specific course and divide in method -->
+    <%= user_percentage = (Score.where(complete: true, user_id: current_user).count / @course.course_resources.count)*100 %> %
+  <% end %>
+<% end %>
+ <%# if @user.admin == true %>
+ <%# end %>
+
+<% if current_user && current_user.admin? %>
+  <%= render "/invitations/form" %>
+<% end %>
+<div class="container">
+    <h1>Units</h1>
+    <%= render "/course_units/course_unit" %>
+</div>
+<% if current_user && current_user.admin? %>
+  <div class="courses-crud">
+    <ul class="nav nav-tabs">
+      <li><%= button_to "Edit Course", edit_course_path, class: "btn btn-success", method: :get %></li>
+      <li>  <%= button_to "Delete Course", course_path(@course), class: "btn btn-success", method: :delete,
+                data: {confirm: "Do you really want to delete this course?"} %></li>
+      <li><%= button_to "Add New Course Unit", new_course_course_unit_path(:course_id), class: "btn btn-success", method: :get %></li>
+    </ul>
+  </div>
+<% end %>
+<br>

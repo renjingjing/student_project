@@ -1,0 +1,9 @@
+
+<% course_unit.course_resources.each do |course_resource| %>
+  <p><%= link_to course_resource.title, course_unit_course_resource_path(course_unit, course_resource) %>
+    <% if current_user && current_user.admin? %>
+    | <%= link_to "Hide Toggle", course_unit_course_resource_path(course_resource.course_unit,
+      course_resource, course_resource: {hidden: !course_resource.hidden}), method: :patch %></p>
+    <% end %>
+<% end %>
+</ul>

@@ -1,0 +1,19 @@
+<%#= render "courses/nav" %>
+
+<h1>Course Unit: <%= @course_unit.title %></h1>
+<p>Description:<%= @course_unit.body %></p>
+<% if can?(:manage, @course_unit) %>
+<%= link_to "Edit", edit_course_unit_path(@course_unit) %>
+<%= link_to "Delete", course_unit_path(@course_unit), method: :delete, data: {confirm: "Are you sure"} %>
+<% end %>
+<%= link_to "Add This Unit to a Course", courses_path %>,
+<%= link_to "Add Course Resource", new_course_unit_course_resource_path(@course_unit) %>
+
+<%# render "/course_resources/resource" %>
+<!-- <ul class="sortable">
+  <% @course_unit.course_resources.each do |course| %>
+    <li><%= course.title %></li>
+    <li><%= course.content %></li>
+    <%= link_to "enter", course_resource_path(course) %>
+  <% end %>
+</ul> -->
